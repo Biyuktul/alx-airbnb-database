@@ -12,7 +12,7 @@ WHERE property_id IN (
 SELECT *
 FROM User
 WHERE user_id IN (
-    SELECT user_id
+    SELECT COUNT(user_id)
     FROM Booking
     WHERE Booking.user_id = User.user_id
 )
