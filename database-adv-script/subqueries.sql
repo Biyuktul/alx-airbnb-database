@@ -1,5 +1,9 @@
 -- find all properties where the average rating is greater than 4.0 using a subquery.
-SELECT Property.[name], Property.[location], Review.rating, Review.comment
-FROM Review INNER JOIN Property
-ON Review.property_id = Property.property_id
-WHERE rating IN(SELECT rating FROM Review WHERE (Review.rating) > 4)
+SELECT *
+FROM Property
+WHERE property_id IN (
+    SELECT property_id
+    FROM Review
+    GROUP BY property_id
+    HAVING AVG(rating) > 4
+)
