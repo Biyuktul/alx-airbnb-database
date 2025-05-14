@@ -12,6 +12,7 @@ FROM [User] JOIN (
 SELECT 
     property_id,
     COUNT(*) AS total_bookings,
-    ROW_NUMBER() OVER (ORDER BY COUNT(*) DESC) AS booking_rank
+    RANK() OVER (ORDER BY COUNT(*) DESC) AS rank_by_bookings,
+    ROW_NUMBER() OVER (ORDER BY COUNT(*) DESC) AS row_number_by_bookings
 FROM Booking
 GROUP BY property_id;
