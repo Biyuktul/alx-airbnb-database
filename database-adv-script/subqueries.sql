@@ -11,8 +11,8 @@ WHERE property_id IN (
 -- Write a correlated subquery to find users who have made more than 3 bookings.
 SELECT *
 FROM User
-WHERE user_id IN (
-    SELECT COUNT(user_id)
+WHERE (
+    SELECT COUNT(*)
     FROM Booking
     WHERE Booking.user_id = User.user_id
-)
+) > 3
