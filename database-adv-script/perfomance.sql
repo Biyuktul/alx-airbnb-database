@@ -1,6 +1,7 @@
 -- Write an initial query that retrieves
 -- all bookings along with the user details, property details, and payment details
 
+EXPLAIN ANALYZE
 SELECT *
 FROM Booking
 LEFT JOIN [User]
